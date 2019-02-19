@@ -1,58 +1,24 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   str.c                                            .::    .:/ .      .::   */
+/*   free_str.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/02/19 11:42:47 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/19 20:55:18 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/02/19 19:43:00 by shthevak     #+#   ##    ##    #+#       */
+/*   Updated: 2019/02/19 19:44:00 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
 
-int		ft_strlen(char *str)
+void	ft_strdel(char **str)
 {
-	int i;
-
-	i = 0;
-	while(str[i])
-		i++;
-	return (i);
-}
-
-void	ft_putstr(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
+	if (str)
 	{
-		write(1, &(str[i]), 1);
-		i++;
+		if (*str)
+			free(*str);
+		str = NULL;
 	}
-}
-
-char	*ft_strdup(char *str)
-{
-	char *ret;
-	int 	i;
-
-	i = 0;
-	if (!str)
-		return (NULL);
-	while (str[i])
-		i++;
-	if (!(ret = malloc(sizeof(ret)* (i + 1))))
-		return (NULL);
-	i = 0;
-	while (str[i])
-	{
-		ret[i] = str[i];
-		i++;
-	}
-	ret[i] = '\0';
-	return (ret);
 }

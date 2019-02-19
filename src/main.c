@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 13:45:09 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/19 18:38:30 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/19 21:11:45 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,7 @@ int init_term()
 {
 	int			ret;
 	char		*term;
-	
+
 	term = getenv("TERM");
 	if (term == NULL)
 	{
@@ -45,6 +45,8 @@ int init_term()
 
 int main(int ac, char **av)
 {
+	t_select *select;
+
 	if (ac <= 1)
 	{
 		ft_putstr("usage : ./ft_select [agrs]\n");
@@ -52,7 +54,15 @@ int main(int ac, char **av)
 	}
 	if (!init_term())
 		return (0);
-/*	if (!init_struct())
-		return (0);*/
+	if (!(select = get_struct(ac, av)))
+		return (0);
+	printf("%d, %d\n", select->nb_args, select->max_arg_len);
+	int i = 0;
+	while(select->args[i])
+	{
+		printf("%s\n", select->args[i]);
+		i++;
+	}
+	ft_free_struct(select);
 	return (0);
 }
