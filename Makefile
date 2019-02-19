@@ -6,14 +6,14 @@
 #    By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/01/28 15:19:07 by shthevak     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/19 11:02:46 by shthevak    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/19 11:58:27 by shthevak    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
 .PHONY : all clean fclean re
 
-NAME = minishell
+NAME = ft_select
 
 # **************************************************************************** #
 #									PATH                                       #
@@ -29,7 +29,7 @@ INC_PATH = ./includes/
 
 INC_NAME =ft_select.h
 
-SRC_NAME = main.c
+SRC_NAME = main.c str.c
 
 # **************************************************************************** #
 #  									VAR                                        #
@@ -45,7 +45,7 @@ SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))
 # **************************************************************************** #
 
 ifndef FLAG
-	FLAG = -Wall -Werror -Wextra -g
+	FLAG = -Wall -Werror -Wextra -g -fsanitize=address
 endif
 
 NORME = norminette
