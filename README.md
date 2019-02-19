@@ -47,3 +47,7 @@ programme ne fonctionne pas de toute façon).</p>
 fg sans que cela influe sur son comportement.</p>
 <p>• Si le programme est lancé avec un environnement vide, vous devez adopter un
 comportement raisonnable.</p>
+
+<h3 align="center"> Documentation </h3>
+
+Init Terminal : https://zestedesavoir.com/tutoriels/1733/termcap-et-terminfo/

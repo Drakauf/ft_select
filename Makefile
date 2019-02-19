@@ -6,7 +6,7 @@
 #    By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/01/28 15:19:07 by shthevak     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/19 11:58:27 by shthevak    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/19 16:20:12 by shthevak    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -45,7 +45,7 @@ SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))
 # **************************************************************************** #
 
 ifndef FLAG
-	FLAG = -Wall -Werror -Wextra -g -fsanitize=address
+	FLAG = -Wall -Werror -Wexta -fsanitize=address -lcurses
 endif
 
 NORME = norminette
@@ -74,7 +74,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ_PATH) $(OBJ)
 	$(SAY) "$(R_1) $(CLEAR_R)\n$(END)
-	@gcc $(FLAGS) -o $@ $(OBJ)
+	@gcc -o $@ $(OBJ) $(FLAG)
 	$(SAY) $(GREEN) $(R_1) $(CLEAR_R) 	                                   ☑️  ft_select ☑️ \n$(END)
 
 $(OBJ_PATH):
