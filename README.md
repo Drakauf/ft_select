@@ -51,3 +51,4 @@ comportement raisonnable.</p>
 <h3 align="center"> Documentation </h3>
 
 Init Terminal : https://zestedesavoir.com/tutoriels/1733/termcap-et-terminfo/
+Termcaps : https://man.cx/termcap(5)/fr

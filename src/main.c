@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 13:45:09 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/19 16:25:52 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/19 18:38:30 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,10 +50,9 @@ int main(int ac, char **av)
 		ft_putstr("usage : ./ft_select [agrs]\n");
 		return (0);
 	}
-	if (init_term())
-	{
-		printf("to do\n");
+	if (!init_term())
 		return (0);
-	}
+/*	if (!init_struct())
+		return (0);*/
 	return (0);
 }

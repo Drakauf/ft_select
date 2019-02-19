@@ -6,7 +6,7 @@
 #    By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/01/28 15:19:07 by shthevak     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/19 16:20:12 by shthevak    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/19 18:36:01 by shthevak    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -29,7 +29,7 @@ INC_PATH = ./includes/
 
 INC_NAME =ft_select.h
 
-SRC_NAME = main.c str.c
+SRC_NAME = main.c str.c select_str.c
 
 # **************************************************************************** #
 #  									VAR                                        #
