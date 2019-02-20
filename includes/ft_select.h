@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/01/29 01:50:41 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/19 21:02:23 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/20 13:47:58 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,6 +38,7 @@ typedef	struct		s_select
 	int				*args_stat;
 	int				nb_args;
 	int				max_arg_len;
+	int				nb_col;
 	int				cursor;
 }					t_select;
 

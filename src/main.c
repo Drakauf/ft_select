@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 13:45:09 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/19 21:11:45 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/20 12:48:20 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -61,6 +61,12 @@ int main(int ac, char **av)
 	while(select->args[i])
 	{
 		printf("%s\n", select->args[i]);
+		i++;
+	}
+	i = 0;
+	while (i < select->nb_args)
+	{
+		printf("%d\n", select->args_stat[i]);
 		i++;
 	}
 	ft_free_struct(select);

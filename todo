@@ -1,0 +1,9 @@
+parceque la flemme de travailler today :
+
+- recuperer les info du teminal : int tcgetattr(int fd, struct termios *termios_p);
+- faire une copie pour restorer lors du quit !
+- modifier le termios pour le passer en non canonique (a se renseigner) + recuperer les touches tapees : int tcsetattr(int fd, int optional_actions, const struct termios *termios_p);
+- initialiser le terminal.
+- faire les fonction d'affichages
+- faire les fonction de suppressions d'un argument
+- reflechir ...
