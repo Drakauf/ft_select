@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/19 19:48:57 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/20 13:47:54 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/20 17:01:10 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,25 +31,41 @@ int			ft_arg_len_max(char **str)
 	return (k);
 }
 
+int			handle_termios(t_select *select)
+{
+	if (!(isatty(STDERR_FILENO)))
+		return (0);
+	if ((SFD = open(ttyname(STDERR_FILENO), O_RDWR)) == -1)
+		return (0);
+	if (tcgetattr(SFD, &(SOTERM)) == -1 || tcgetattr(SFD, &(SNTERM)) == -1)
+		return (0);
+	return (1);
+}
+
 t_select	*init_struct(int a, char **ac)
 {
 	t_select *select;
 
 	if (!(select = malloc(sizeof(select))))
 		return (NULL);
-	if (!(select->args = init_tableau_args(ac + 1)))
+	if (!(SARGS = init_tableau_args(ac + 1)))
 	{
 		free(select);
 		return (NULL);
 	}
-	if (!(select->args_stat = init_tableau_args_stat(ft_tab_len(select->args))))
+	if (!(SARGT = init_tableau_args_stat(ft_tab_len(SARGS))))
 	{
 		ft_free_struct(select);
 		return (NULL);
 	}
-	select->nb_args = ft_tab_len(ac) - 1;
-	select->max_arg_len = ft_arg_len_max(select->args);
-	select->cursor = 0;
+	if (!handle_termios(select))
+	{
+		ft_free_struct(select);
+		return (NULL);
+	}
+	SNB = ft_tab_len(SARGS);
+	SMLEN = ft_arg_len_max(SARGS);
+	SCUR = 0;
 	return (select);
 }
 

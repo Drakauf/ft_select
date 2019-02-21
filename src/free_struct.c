@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/19 20:37:19 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/19 20:54:35 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/20 16:26:46 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,10 +36,10 @@ void	ft_free_struct(t_select *select)
 {
 	if (select)
 	{
-		if (select->args)
-			ft_free_tab(select->args);
-		if (select->args_stat)
-			free(select->args_stat);
+		if (SARGS)
+			ft_free_tab(SARGS);
+		if (SARGT)
+			free(SARGT);
 		free(select);
 	}
 }

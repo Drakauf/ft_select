@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/01/29 01:50:41 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/20 13:47:58 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/20 17:01:13 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,13 +14,15 @@
 #ifndef FT_SELECT_H
 # define FT_SELECT_H
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <termios.h>
-#include <termcap.h>
-
 #include <curses.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include <term.h>
+#include <termcap.h>
+#include <termios.h>
+#include <unistd.h>
 
 /*
 ********************************************************************************
@@ -38,9 +40,22 @@ typedef	struct		s_select
 	int				*args_stat;
 	int				nb_args;
 	int				max_arg_len;
-	int				nb_col;
-	int				cursor;
+	int				nb_columns;
+	int				cursor_position;
+	struct	termios	nterm;
+	struct	termios	oterm;
+	int				fd;
 }					t_select;
+
+# define	SFD		select->fd
+# define	SNTERM	select->nterm
+# define	SOTERM	select->oterm
+# define	SARGS	select->args
+# define	SARGT	select->args_stat
+# define	SMLEN	select->max_arg_len
+# define	SNB		select->nb_args
+# define	SCUR	select->cursor_position
+# define	SCOL	select->columns
 
 /*
 ********************************************************************************
