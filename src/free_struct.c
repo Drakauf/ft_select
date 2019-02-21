@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/19 20:37:19 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/20 16:26:46 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/21 17:26:12 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,14 +32,21 @@ void	ft_free_tab(char **tableau)
 	}
 }
 
-void	ft_free_struct(t_select *select)
+void	ft_free_struct(t_select **sel)
 {
+	t_select  *select;
+
+	select = *sel;
 	if (select)
 	{
 		if (SARGS)
 			ft_free_tab(SARGS);
 		if (SARGT)
 			free(SARGT);
+		if (SFD != -1)
+			close(SFD);
 		free(select);
+		select = NULL;
 	}
+	*sel = select;
 }

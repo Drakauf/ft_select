@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/19 19:48:57 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/20 17:01:10 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/21 17:40:24 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,6 +39,14 @@ int			handle_termios(t_select *select)
 		return (0);
 	if (tcgetattr(SFD, &(SOTERM)) == -1 || tcgetattr(SFD, &(SNTERM)) == -1)
 		return (0);
+	SNTERM.c_lflag &= ~ ICANON;
+	SNTERM.c_lflag &= ~ ECHO;
+	SNTERM.c_cc[VMIN] = 0;
+	SNTERM.c_cc[VTIME] = 0;
+	if (tcsetattr(SFD, TCSANOW, &(SNTERM)) == -1)
+		return (0);
+	tputs(tgetstr("ti", NULL), 1, ft_putchar_select);
+	tputs(tgetstr("vi", NULL), 1, ft_putchar_select);
 	return (1);
 }
 
@@ -46,24 +54,25 @@ t_select	*init_struct(int a, char **ac)
 {
 	t_select *select;
 
-	if (!(select = malloc(sizeof(select))))
+	if (!(select = malloc(sizeof(t_select))))
 		return (NULL);
-	if (!(SARGS = init_tableau_args(ac + 1)))
+	SNB = a - 1;
+	SFD = -1;
+	if (!(SARGS = init_tableau_args(ac, a)))
 	{
 		free(select);
 		return (NULL);
 	}
-	if (!(SARGT = init_tableau_args_stat(ft_tab_len(SARGS))))
+	if (!(select->args_stat = init_tableau_args_stat(SNB)))
 	{
-		ft_free_struct(select);
+		ft_free_struct(&select);
 		return (NULL);
 	}
 	if (!handle_termios(select))
 	{
-		ft_free_struct(select);
+		ft_free_struct(&select);
 		return (NULL);
 	}
-	SNB = ft_tab_len(SARGS);
 	SMLEN = ft_arg_len_max(SARGS);
 	SCUR = 0;
 	return (select);

@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/19 11:42:47 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/19 20:55:18 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/21 16:37:13 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,6 +18,8 @@ int		ft_strlen(char *str)
 	int i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while(str[i])
 		i++;
 	return (i);

@@ -6,13 +6,12 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 13:45:09 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/20 16:23:55 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/21 17:43:15 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
-
 #include <stdio.h>
 
 int init_term()
@@ -70,13 +69,9 @@ int main(int ac, char **av)
 	{
 		printf("%d\n", select->args_stat[i]);
 		i++;
+	}	
+	show_args(select);
+	ft_free_struct(&select);
 	}
-	}
-	ft_free_struct(select);
-	printf("de = %d\n", STDERR_FILENO);
-	printf("name = %s\n", ttyname(STDERR_FILENO));
-	int fd = open(ttyname(STDERR_FILENO), O_RDWR);
-	printf("fd = %d\n", fd);
-	close(fd);
 	return (0);
 }
