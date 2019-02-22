@@ -50,5 +50,9 @@ comportement raisonnable.</p>
 
 <h3 align="center"> Documentation </h3>
 
-Init Terminal : https://zestedesavoir.com/tutoriels/1733/termcap-et-terminfo/
-Termcaps : https://man.cx/termcap(5)/fr
+Init Terminal : https://zestedesavoir.com/tutoriels/1733/termcap-et-terminfo/ </p>
+Termcaps : https://man.cx/termcap(5)/fr </p>
+[Non-]Canonique mode : http://www-igm.univ-mlv.fr/~dr/cs/node165.html </p>
+Termios : http://manpagesfr.free.fr/man/man3/termios.3.html && https://en.wikibooks.org/wiki/Serial_Programming/termios </p>
+Puts : https://linux.die.net/man/3/putc </p>
+

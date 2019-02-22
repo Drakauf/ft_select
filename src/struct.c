@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/19 19:48:57 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/21 17:40:24 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/22 11:17:28 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -57,6 +57,7 @@ t_select	*init_struct(int a, char **ac)
 	if (!(select = malloc(sizeof(t_select))))
 		return (NULL);
 	SNB = a - 1;
+	SDNB = 0;
 	SFD = -1;
 	if (!(SARGS = init_tableau_args(ac, a)))
 	{

@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 13:45:09 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/21 17:43:15 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/22 10:37:40 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -55,6 +55,7 @@ int main(int ac, char **av)
 		return (0);
 	if (!(select = get_struct(ac, av)))
 		return (0);
+//	launch_signal();
 	if (select)
 	{
 	printf("%d, %d\n", select->nb_args, select->max_arg_len);
@@ -71,6 +72,10 @@ int main(int ac, char **av)
 		i++;
 	}	
 	show_args(select);
+	while (1)
+	{
+	}
+//	key_hook(select);
 	ft_free_struct(&select);
 	}
 	return (0);

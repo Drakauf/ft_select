@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/01/29 01:50:41 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/21 17:21:31 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/22 10:36:50 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,7 +39,8 @@ typedef	struct		s_select
 {
 	char			**args; 				/* tableau d'arguments */
 	int				*args_stat;				/* tableau d'etat des arguments */
-	int				nb_args;				/* nombre d'arguments */
+	int				nb_args;				/* nombre total d'arguments */
+	int				nb_del_args;				/* nombre d'arguments supprime*/
 	int				max_arg_len;			/* longueur maximums des arguments */
 	int				cursor_position;		/* position du curseur dans les arguments */
 	struct termios	nterm;					/* termios a set */
@@ -58,6 +59,7 @@ typedef	struct		s_select
 # define SARGT		select->args_stat
 # define SMLEN		select->max_arg_len
 # define SNB		select->nb_args
+# define SDNB		select->nb_del_args
 # define SCUR		select->cursor_position
 # define SCOL		select->nb_columns
 # define SLIN		select->nb_lines
@@ -89,5 +91,6 @@ void				show_args(t_select *select);
 void				terminal_size(void);
 void				clean_terminal(void);
 void				print_args(t_select *select);
+void				ft_put_args(t_select *select, int *i, int *j, int *k);
 
 #endif

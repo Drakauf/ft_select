@@ -6,13 +6,29 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/21 13:27:38 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/21 17:43:17 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/22 11:17:26 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
 
+void	ft_put_args(t_select *select, int *i, int *j, int *k)
+{
+	if (SCUR == *k)
+		tputs(tgetstr("us", NULL), 1, ft_putchar_select);
+	if (SARGT[*k] == 1)
+		tputs(tgetstr("mr", NULL), 1, ft_putchar_select);
+	ft_putstr_select(SARGS[(*k)]);
+	if (SCUR == *k || SARGT[*k] == 1)
+		tputs(tgetstr("me", NULL), 1, ft_putchar_select);
+	(*i)++;
+	if ((*i) >= SCOL)
+	{
+		(*j)++;
+		(*i) = 0;
+	}
+}
 
 void	print_args(t_select *select)
 {
@@ -20,17 +36,21 @@ void	print_args(t_select *select)
 	int j;
 	int k;
 
-	if (!SNB || !SCOL || SLIN > STLIN)
+	if (!SCOL || SLIN > STLIN)
 		return (ft_putstr_select("RESIZE TERMINAL PLEASE ...\n"));
 	i = 0;
 	j = 0;
 	k = 0;
 	while (k < SNB)
 	{
-		ft_putstr_select(SARGS[k]);
+		if (SARGT[k] >= 0)
+		{
+
+			ft_put_args(select, &i, &j, &k);
+		}
 		k++;
+		sleep(1);
 	}
-	
 }
 
 void	terminal_size(void)
