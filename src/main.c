@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 13:45:09 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/22 10:37:40 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/22 12:10:52 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -72,10 +72,7 @@ int main(int ac, char **av)
 		i++;
 	}	
 	show_args(select);
-	while (1)
-	{
-	}
-//	key_hook(select);
+	key_hook(select);
 	ft_free_struct(&select);
 	}
 	return (0);

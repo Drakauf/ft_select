@@ -6,30 +6,34 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/19 19:48:57 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/22 11:17:28 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/22 17:22:53 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
 
-int			ft_arg_len_max(char **str)
+int			ft_arg_len_max(t_select *select)
 {
 	int i;
 	int j;
 	int k;
 
-	i = 0;
-	j = 0;
 	k = 0;
-	while (str[i])
+	if (select)
 	{
-		if ((j = ft_strlen(str[i])) > k)
-			k = j;
-		i++;
+		i = 0;
+		j = 0;
+		while (SARGS[i])
+		{
+			if (SARGT[i] >= 0 && (j = ft_strlen(SARGS[i])) > k)
+				k = j;
+			i++;
+		}
 	}
 	return (k);
 }
+
 
 int			handle_termios(t_select *select)
 {
@@ -58,6 +62,7 @@ t_select	*init_struct(int a, char **ac)
 		return (NULL);
 	SNB = a - 1;
 	SDNB = 0;
+	SLDNB = SNB - 1;
 	SFD = -1;
 	if (!(SARGS = init_tableau_args(ac, a)))
 	{
@@ -74,7 +79,6 @@ t_select	*init_struct(int a, char **ac)
 		ft_free_struct(&select);
 		return (NULL);
 	}
-	SMLEN = ft_arg_len_max(SARGS);
 	SCUR = 0;
 	return (select);
 }

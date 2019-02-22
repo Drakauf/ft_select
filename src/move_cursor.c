@@ -1,47 +1,44 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   tab.c                                            .::    .:/ .      .::   */
+/*   move_cursor.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/02/19 19:31:28 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/22 12:51:40 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/02/22 14:23:24 by shthevak     #+#   ##    ##    #+#       */
+/*   Updated: 2019/02/22 18:24:06 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
 
-
-int		*init_tableau_args_stat(int i)
+void	ft_move_cursor_up(t_select *select)
 {
-	int	*ret;
-	int	j;
+	int i;
 
-	if (!(ret = malloc(sizeof(ret) * i)))
-		return (NULL);
-	j = 0;
-	while (j < i)
-		ret[j++] = 0;
-	return (ret);
-}
-
-char	**init_tableau_args(char **str, int a)
-{
-	char **ret;
-	int 	i;
-
-	if (a == 0)
-		return (NULL);
-	if (!(ret = malloc(sizeof(ret) * (a))))
-		return (NULL);
-	i = 1;
-	while (i < a)
+	if (SDNB == SNB - 1 || SLIN == 0)
+		return ;
+	i = SCOL;
+	if (SCUR - SCOL < 0)
 	{
-		ret[i - 1] = ft_strdup(str[i]);
-		i++;
+		SCUR = SLDNB;
+		i = ((SNB - SDNB) % SCOL == 0) ? SCOL : (SNB - SDNB) % SCOL - 1;
+//		i == -1 ? i = SCOL: 0;
 	}
-	ret[i - 1] = NULL;
-	return (ret);
+	while (i)
+	{
+		if (SCUR >= 0 && SARGT[SCUR--] >= 0)
+			i--;
+	}
+	if (i)
+	{
+		SCUR = SLDNB;
+		while (i)
+		{
+			if (SCUR >= 0 && SARGT[SCUR--] >= 0)
+				i--;
+		}
+	}
+	SCUR < 0 ? SCUR = SLDNB : 0;
 }

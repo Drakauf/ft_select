@@ -55,3 +55,4 @@ comportement raisonnable.</p>
 |[Non-]Canonique mode|http://www-igm.univ-mlv.fr/~dr/cs/node165.html|
 |Termios|http://manpagesfr.free.fr/man/man3/termios.3.html https://en.wikibooks.org/wiki/Serial_Programming/termios|
 |Puts|https://linux.die.net/man/3/putc|
+|tgetent tgetstr tgoto|https://linux.die.net/man/3/tgetstr|

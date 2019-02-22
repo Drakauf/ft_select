@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/21 13:27:38 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/22 11:17:26 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/22 18:24:10 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,6 +15,10 @@
 
 void	ft_put_args(t_select *select, int *i, int *j, int *k)
 {
+	int n;
+
+	n = *i;
+	tputs(tgoto(tgetstr("cm", NULL), (n * SMLEN), (*j)), 1, ft_putchar_select);
 	if (SCUR == *k)
 		tputs(tgetstr("us", NULL), 1, ft_putchar_select);
 	if (SARGT[*k] == 1)
@@ -45,11 +49,9 @@ void	print_args(t_select *select)
 	{
 		if (SARGT[k] >= 0)
 		{
-
 			ft_put_args(select, &i, &j, &k);
 		}
 		k++;
-		sleep(1);
 	}
 }
 
@@ -61,11 +63,12 @@ void	terminal_size(void)
 	if ((select = get_struct(0, NULL)))
 	{
 		ioctl(SFD, TIOCGWINSZ, &w);
+		SMLEN = ft_arg_len_max(select) + 1;
 		STLIN = w.ws_row;
 		STCOL = w.ws_col;
-		SCOL = STCOL / (SMLEN + 1);
+		SCOL = STCOL / SMLEN;
 		if (SCOL)
-			SLIN = SNB / SCOL;
+			SLIN = (SNB - SDNB) / SCOL;
 	}
 }
 
