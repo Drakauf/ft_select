@@ -4,8 +4,9 @@ DONE : - recuperer les info du teminal : int tcgetattr(int fd, struct termios *t
 DONE : - faire une copie pour restorer lors du quit !
 - modifier le termios pour le passer en non canonique (a se renseigner) + recuperer les touches tapees : int tcsetattr(int fd, int optional_actions, const struct termios *termios_p);
 DONE : - initialiser le terminal.
+DONE : - faire les fonction d'affichages
+DONE : loop for keyhook
+NOT DOING : - faire les fonction de suppressions d'un argument
 
-DOING ==> : - faire les fonction d'affichages
-- faire les fonction de suppressions d'un argument
-- loop for keyhook
+TODO : SIGNAUX !!!
 - reflechir ...

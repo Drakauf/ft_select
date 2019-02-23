@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/19 19:48:57 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/22 17:22:53 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/23 11:42:51 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,7 +34,6 @@ int			ft_arg_len_max(t_select *select)
 	return (k);
 }
 
-
 int			handle_termios(t_select *select)
 {
 	if (!(isatty(STDERR_FILENO)))
@@ -43,8 +42,8 @@ int			handle_termios(t_select *select)
 		return (0);
 	if (tcgetattr(SFD, &(SOTERM)) == -1 || tcgetattr(SFD, &(SNTERM)) == -1)
 		return (0);
-	SNTERM.c_lflag &= ~ ICANON;
-	SNTERM.c_lflag &= ~ ECHO;
+	SNTERM.c_lflag &= ~(ICANON);
+	SNTERM.c_lflag &= ~(ECHO);
 	SNTERM.c_cc[VMIN] = 0;
 	SNTERM.c_cc[VTIME] = 0;
 	if (tcsetattr(SFD, TCSANOW, &(SNTERM)) == -1)
@@ -79,7 +78,6 @@ t_select	*init_struct(int a, char **ac)
 		ft_free_struct(&select);
 		return (NULL);
 	}
-	SCUR = 0;
 	return (select);
 }
 
@@ -90,6 +88,8 @@ t_select	*get_struct(int a, char **ac)
 	if (!select)
 	{
 		select = init_struct(a, ac);
+		SCUR = 0;
+		SFDNB = 0;
 	}
 	return (select);
 }

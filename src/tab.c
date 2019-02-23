@@ -6,13 +6,12 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/19 19:31:28 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/22 12:51:40 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/23 11:43:17 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
-
 
 int		*init_tableau_args_stat(int i)
 {
@@ -29,8 +28,8 @@ int		*init_tableau_args_stat(int i)
 
 char	**init_tableau_args(char **str, int a)
 {
-	char **ret;
-	int 	i;
+	char	**ret;
+	int		i;
 
 	if (a == 0)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/22 12:11:51 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/22 18:24:08 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/23 11:40:06 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,6 @@ void	prev_cur(t_select *select)
 		if (SARGT[i] >= 0)
 		{
 			SCUR = i;
-			dprintf(2, "prev 1 : %d\n", i);
 			return ;
 		}
 		i--;
@@ -34,13 +33,11 @@ void	prev_cur(t_select *select)
 		if (SARGT[i] >= 0)
 		{
 			SCUR = i;
-			dprintf(2, "prev 2 : %d\n", i);
 			return ;
 		}
 		i--;
 	}
 }
-
 
 void	next_cur(t_select *select)
 {
@@ -52,7 +49,6 @@ void	next_cur(t_select *select)
 		if (SARGT[i] >= 0)
 		{
 			SCUR = i;
-			dprintf(2, "next 1 : %d\n", i);
 			return ;
 		}
 		i++;
@@ -63,7 +59,6 @@ void	next_cur(t_select *select)
 		if (SARGT[i] >= 0)
 		{
 			SCUR = i;
-			dprintf(2, "next 2 : %d\n", i);
 			return ;
 		}
 		i++;
@@ -72,14 +67,17 @@ void	next_cur(t_select *select)
 
 void	key_dir(t_select *select, long key)
 {
-
 	if (key == UP)
-	{
 		ft_move_cursor_up(select);
-	}
+	if (key == LEFT)
+		ft_move_cursor_left(select);
+	if (key == RIGHT)
+		ft_move_cursor_right(select);
+	if (key == DOWN)
+		ft_move_cursor_down(select);
 }
 
-int		key_other(t_select *select, long key)
+int		key_delete(t_select *select, long key)
 {
 	if (key == DELETE || key == BACKSPACE)
 	{
@@ -93,7 +91,15 @@ int		key_other(t_select *select, long key)
 			SLDNB = SCUR;
 		}
 		else
-			next_cur(select);
+		{
+			if (SCUR == SFDNB)
+			{
+				next_cur(select);
+				SFDNB = SCUR;
+			}
+			else
+				next_cur(select);
+		}
 	}
 	return (0);
 }
@@ -107,14 +113,16 @@ void	key_hook(t_select *select)
 		key = 0;
 		if (read(0, &key, 8))
 		{
+			if (key == RETURN)
+				break ;
 			key_dir(select, key);
-			if (key_other(select, key) || key == ECHAP)
+			key == SPACE ? key_space(select) : 0;
+			if (key_delete(select, key) || key == ECHAP)
 			{
 				SDNB = SNB;
 				break ;
 			}
 			show_args(select);
-			dprintf(1, "\nSCUR = %d SNB = %d SDNB = %D SLDNB= %d SCOL = %d SLIN = %d nb = %d\n", SCUR, SNB, SDNB, SLDNB, SCOL ,SLIN ,(SNB - SDNB) % SCOL );
 		}
 	}
 }

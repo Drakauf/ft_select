@@ -56,3 +56,6 @@ comportement raisonnable.</p>
 |Termios|http://manpagesfr.free.fr/man/man3/termios.3.html https://en.wikibooks.org/wiki/Serial_Programming/termios|
 |Puts|https://linux.die.net/man/3/putc|
 |tgetent tgetstr tgoto|https://linux.die.net/man/3/tgetstr|
+
+moyen d'ameliorer : 
+Liste chainee, avec le nom, des coordonnees x et y pour les placer en tableau et ainsi de deplacer plus facilement en boucle sans trop faire de calcul et verifier si l'element n'as pas ete supprime.

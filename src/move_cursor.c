@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/22 14:23:24 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/22 18:24:06 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/23 11:44:11 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,28 +17,66 @@ void	ft_move_cursor_up(t_select *select)
 {
 	int i;
 
-	if (SDNB == SNB - 1 || SLIN == 0)
+	if (SLIN == 0)
 		return ;
 	i = SCOL;
-	if (SCUR - SCOL < 0)
-	{
-		SCUR = SLDNB;
-		i = ((SNB - SDNB) % SCOL == 0) ? SCOL : (SNB - SDNB) % SCOL - 1;
-//		i == -1 ? i = SCOL: 0;
-	}
-	while (i)
+	while (i && SCUR >= SFDNB)
 	{
 		if (SCUR >= 0 && SARGT[SCUR--] >= 0)
 			i--;
 	}
-	if (i)
+	if (SCUR < SFDNB)
+		SCUR = SLDNB;
+	if (SARGT[SCUR] == -1)
+		prev_cur(select);
+}
+
+void	ft_move_cursor_left(t_select *select)
+{
+	if (SCUR == SFDNB)
 	{
 		SCUR = SLDNB;
-		while (i)
-		{
-			if (SCUR >= 0 && SARGT[SCUR--] >= 0)
-				i--;
-		}
+		return ;
 	}
-	SCUR < 0 ? SCUR = SLDNB : 0;
+	SCUR--;
+	prev_cur(select);
+}
+
+void	ft_move_cursor_right(t_select *select)
+{
+	if (SCUR == SLDNB)
+	{
+		SCUR = SFDNB;
+		return ;
+	}
+	SCUR++;
+	next_cur(select);
+}
+
+void	ft_move_cursor_down(t_select *select)
+{
+	int i;
+
+	if (SLIN == 0)
+		return ;
+	i = SCOL;
+	while (i && SCUR <= SLDNB)
+	{
+		if (SCUR <= SLDNB && SARGT[SCUR++] >= 0)
+			i--;
+	}
+	if (SCUR > SLDNB)
+		SCUR = SFDNB;
+	if (SARGT[SCUR] == -1)
+		prev_cur(select);
+}
+
+void	key_space(t_select *select)
+{
+	SARGT[SCUR] = !SARGT[SCUR];
+	if (SARGT[SCUR])
+	{
+		SCUR++;
+		next_cur(select);
+	}
 }
