@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 13:45:09 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/23 11:47:57 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/23 17:02:59 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,7 +51,7 @@ void	print_selected(t_select *select)
 	j = 0;
 	while (i < SNB)
 	{
-		if (SARGT[i])
+		if (SARGT[i] == 1)
 		{
 			if (j != 0)
 				write(1, " ", 1);
@@ -75,7 +75,7 @@ int		main(int ac, char **av)
 		return (0);
 	if (!(select = get_struct(ac, av)))
 		return (0);
-	//launch_signal();
+	launch_signal();
 	if (select)
 	{
 		show_args(select);

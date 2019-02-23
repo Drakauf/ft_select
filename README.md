@@ -48,14 +48,16 @@ fg sans que cela influe sur son comportement.</p>
 <p>• Si le programme est lancé avec un environnement vide, vous devez adopter un
 comportement raisonnable.</p>
 
-|        |<h3 align="center"> Documentation </h3>|
+||<h3 align="center"> Documentation </h3>|
 |:--------:|:---------:|
-| Init Terminal | https://zestedesavoir.com/tutoriels/1733/termcap-et-terminfo/ |
-| Termcaps |https://man.cx/termcap(5)/fr |
+|Init Terminal| https://zestedesavoir.com/tutoriels/1733/termcap-et-terminfo/ |
+|Termcaps|https://man.cx/termcap(5)/fr |
 |[Non-]Canonique mode|http://www-igm.univ-mlv.fr/~dr/cs/node165.html|
 |Termios|http://manpagesfr.free.fr/man/man3/termios.3.html https://en.wikibooks.org/wiki/Serial_Programming/termios|
 |Puts|https://linux.die.net/man/3/putc|
 |tgetent tgetstr tgoto|https://linux.die.net/man/3/tgetstr|
+|Signaux|http://cristal.inria.fr/~remy/poly/system/camlunix/sign.html|
+|tty_ioctl|http://man7.org/linux/man-pages/man4/tty_ioctl.4.html|
 
 moyen d'ameliorer : 
 Liste chainee, avec le nom, des coordonnees x et y pour les placer en tableau et ainsi de deplacer plus facilement en boucle sans trop faire de calcul et verifier si l'element n'as pas ete supprime.

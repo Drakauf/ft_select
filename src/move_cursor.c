@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/22 14:23:24 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/23 11:44:11 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/23 17:15:27 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -68,7 +68,7 @@ void	ft_move_cursor_down(t_select *select)
 	if (SCUR > SLDNB)
 		SCUR = SFDNB;
 	if (SARGT[SCUR] == -1)
-		prev_cur(select);
+		next_cur(select);
 }
 
 void	key_space(t_select *select)

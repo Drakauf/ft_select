@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/22 12:11:51 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/23 11:40:06 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/23 17:32:51 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -111,7 +111,7 @@ void	key_hook(t_select *select)
 	while (1)
 	{
 		key = 0;
-		if (read(0, &key, 8))
+		if (read(0, &key, 8) && SCOL && SLIN < STLIN)
 		{
 			if (key == RETURN)
 				break ;

@@ -6,7 +6,7 @@
 #    By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/01/28 15:19:07 by shthevak     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/22 14:23:14 by shthevak    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/23 15:37:19 by shthevak    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -30,7 +30,7 @@ INC_PATH = ./includes/
 INC_NAME =ft_select.h
 
 SRC_NAME = main.c str.c select_str.c tab.c free_str.c struct.c free_struct.c\
-		   show.c key_hook.c move_cursor.c
+		   show.c key_hook.c move_cursor.c signaux.c
 
 # **************************************************************************** #
 #  									VAR                                        #

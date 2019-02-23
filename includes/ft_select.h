@@ -6,7 +6,7 @@
 /*   By: shthevak <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/01/29 01:50:41 by shthevak     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/23 11:54:11 by shthevak    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/23 17:22:34 by shthevak    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -121,4 +121,9 @@ void				ft_move_cursor_right(t_select *select);
 void				ft_move_cursor_down(t_select *select);
 int					key_delete(t_select *select, long key);
 void				key_space(t_select *select);
+void				launch_signal(void);
+void				handle_signal_close(int nb);
+void				handle_signal_close(int nb);
+void				handle_signal_resize(int nb);
+
 #endif
